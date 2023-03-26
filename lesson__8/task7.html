@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>lesson 8</title>
+  </head>
+
+  <body>
+    <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+      Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей
+      за: 1 за весь рік; 2 у першій половині року; 3 у другій половині року; 4
+      за літо; 5 за ІІ квартал; 6 за парні місяці (з парними номерами); 7 за
+      місяці, які є початковими у сезоні (весна, літо, осінь, зима).
+    </h1>
+    <script>
+      function getRandomPayment() {
+        let paymentArray = []
+        for (let i = 0; i < 12; i++) {
+          let randomNum = Math.floor(Math.random() * 500) + 1
+          paymentArray.push(randomNum)
+        }
+        return paymentArray
+      }
+      function getSumAllYear(array, startMonth, endMonth) {
+        let sum = 0
+        for (let i = startMonth - 1; i < endMonth; i++) {
+          sum += array[i]
+        }
+        return sum
+      }
+      function getSumNotEvenMonth(array) {
+        let sum = 0
+        for (let i = 0; i < array.length; i++) {
+          if (i % 2 === 0) sum += array[i]
+        }
+        return sum
+      }
+      function getSumOfPairMonth(array) {
+        let sum = 0
+        for (let i = 0; i < array.length; i++) {
+          if (i % 3 === 0) sum += array[i]
+        }
+        return sum
+      }
+      let sumAllYear = getSumAllYear(getRandomPayment(), 1, 12)
+      let sumTheFirstHalfOfTheYear = getSumAllYear(getRandomPayment(), 1, 6)
+      let sumTheSecondHalfOfTheYear = getSumAllYear(getRandomPayment(), 7, 12)
+      let sumSummerMounth = getSumAllYear(getRandomPayment(), 6, 8)
+      let sum2QuarterMonht = getSumAllYear(getRandomPayment(), 4, 6)
+
+      document.write(`<div>
+   <p>
+      Дано 12 платежей ${getRandomPayment()}
+   </p>
+   <p>
+      Сумма за год: ${sumAllYear} , Сумма за первое полугодие: ${sumTheFirstHalfOfTheYear}, Сумма за второе полугодие: ${sumTheSecondHalfOfTheYear}, Сумма за 2-ой квартал ${sum2QuarterMonht}
+   </p>
+   <p>
+      Сумма за лето: ${sumSummerMounth}, Сумма четных месяцов: ${getSumOfPairMonth(
+        getRandomPayment()
+      )}, Сумма не четных месяцев: ${getSumNotEvenMonth(getRandomPayment())}. 
+   </p>
+</div>`)
+    </script>
+  </body>
+</html>

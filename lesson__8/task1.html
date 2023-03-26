@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>lesson 8</title>
+  </head>
+
+  <body>
+    <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+      Дано масив, який містить оцінки з К предметів. Знайти середній бал і
+      з’ясувати до якої категорії він відноситься (відмінник, двійочник (має
+      хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча
+      би одна трійка)).
+    </h1>
+    <script>
+      let studentAssessment = []
+      function getRating() {
+        const quantitySubjectsWithGrades = parseInt(
+          prompt(`Ввидите количество предметов`, "5")
+        )
+        for (let i = 0; i < quantitySubjectsWithGrades; i++) {
+          let randomScore = Math.floor(Math.random() * 5) + 1
+          studentAssessment.push(randomScore)
+        }
+        return studentAssessment
+      }
+
+      function getAverageScore() {
+        let sumAverageScore = 0
+        for (let i = 0; i < studentAssessment.length; i++) {
+          sumAverageScore += studentAssessment[i]
+        }
+        return sumAverageScore / studentAssessment.length
+      }
+
+      function getStudentsCategory() {
+        const minScore = Math.min(...studentAssessment)
+        let result
+        switch (minScore) {
+          case 1:
+          case 2:
+            result = "двоишник"
+            break
+          case 3:
+            result = "троишник"
+            break
+          case 4:
+            result = "хорошист"
+            break
+          case 5:
+            result = "отличник"
+            break
+        }
+        return result
+      }
+
+      document.write(`<p> Ваши оценки : ${getRating()}</p>
+      <p> Средний бал : ${getAverageScore()}</p>
+      <p> Вы : ${getStudentsCategory()}</p>`)
+    </script>
+  </body>
+</html>

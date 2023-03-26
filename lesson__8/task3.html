@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>lesson 8</title>
+  </head>
+
+  <body>
+    <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+      . Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я
+      «Іван».
+    </h1>
+    <script>
+      let ivanArray = ["Саша", "Женя", "Юля", "Иван", "Иван"]
+      function isNameTheIvan(ivanArray) {
+        let count = 0
+        for (let i = 0; i < ivanArray.length; i++) {
+          if (ivanArray[i] === "Иван") {
+            count++
+          }
+        }
+        return count
+      }
+      document.write(
+        `Данны именна ${ivanArray} <br> имя Иван встречается ${isNameTheIvan(
+          ivanArray
+        )} раза`
+      )
+    </script>
+  </body>
+</html>

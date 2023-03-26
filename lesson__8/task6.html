@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>lesson 8</title>
+  </head>
+
+  <body>
+    <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+      Дано послідовність цін товарів та назв (у окремих масивах). Вивести на
+      екран ті, які може собі дозволити користувач (кількість грошей задається).
+    </h1>
+    <script>
+      let priseProducts = [200, 45, 147, 85, 12, 105, 450, 1050]
+      let nameProducts = [
+        "рыба",
+        "сыр",
+        "помидор",
+        "сосиски",
+        "мука",
+        "телефон",
+        "платье",
+        "сумка",
+      ]
+      let userMoney = parseFloat(
+        prompt(`Ввидите сумму которую готовы потратить`, "400")
+      )
+      function getUserPurchases(prise, product, money) {
+        let arr = []
+        for (let i = 0; i < product.length; i++) {
+          if (prise[i] < money) arr.push(product[i])
+        }
+        return arr
+      }
+      let allBuyUser = getUserPurchases(priseProducts, nameProducts, userMoney)
+      document.write(`<div>
+   <p>
+      Данны продукты : ${nameProducts}
+   </p>
+   <p>
+      Цены на них : ${priseProducts}
+   </p>
+   <p>
+      У вас есть ${userMoney} , вы можете себе купить эти продукты или вещи : ${allBuyUser} 
+   </p>
+</div>`)
+    </script>
+  </body>
+</html>

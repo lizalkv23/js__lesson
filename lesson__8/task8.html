@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>lesson 8</title>
+  </head>
+
+  <body>
+    <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+      Дано одновимірний масив, у якому зберігається певна виграшна сума
+      (елементи заповнюються випадковим чином значеннями від -500 до 500).
+      Надаючи користувачу можливість вибирати номери елементів (поки він не
+      відмовиться). Знаходити сумарний виграш.
+    </h1>
+    <script>
+      let userChoice = parseInt(prompt(`Сколько ячеек вы хотите открыть?`, "5"))
+      function getRandomNumberPlus500_minus500() {
+        let minNum = -500
+        let maxNum = 500
+        let arr = []
+        for (let i = 0; i < userChoice; i++) {
+          let randomNum = Math.floor(
+            Math.random() * (maxNum - minNum + 1) + -500
+          )
+          arr.push(randomNum)
+        }
+        return arr
+      }
+      function getUserWinningAmount(array) {
+        let count = 0
+        for (let i = 0; i < array.length; i++) {
+          count += array[i]
+        }
+        return count
+      }
+      const totalSum = getUserWinningAmount(getRandomNumberPlus500_minus500())
+      document.write(`<div>
+   <p>
+      Вы открыли ячееки с такими суммами ${getRandomNumberPlus500_minus500()} , ваш выграш составил ${totalSum}.
+   </p>
+</div>`)
+    </script>
+  </body>
+</html>

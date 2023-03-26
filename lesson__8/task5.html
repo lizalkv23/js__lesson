@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>lesson 8</title>
+  </head>
+
+  <body>
+    <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+      Дано послідовність оцінок учня. Підрахувати кількість: 1 двійок 2
+      кількість хороших оцінок (добре, відмінно); 3 кількість оцінок, які нижче
+      середнього.
+    </h1>
+    <script>
+      let scoreStudentArray = [2, 2, 4, 5, 5, 4, 3, 2, 2, 5, 4, 5, 5, 5, 4]
+      function getStudentHave_2(array) {
+        count = 0
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] === 2) {
+            count++
+          }
+        }
+        return count
+      }
+      function getStudentHave_4_And_5(array) {
+        count = 0
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] === 4 || array[i] === 5) {
+            count++
+          }
+        }
+        return count
+      }
+      function getAverageRating(array) {
+        let sumArray = 0
+        for (let i = 0; i < array.length; i++) {
+          sumArray += array[i]
+        }
+        return sumArray / scoreStudentArray.length
+      }
+
+      averageRating = Math.floor(getAverageRating(scoreStudentArray))
+
+      function getGradesBelowAverage(array) {
+        let count = 0
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] < averageRating) {
+            count++
+          }
+        }
+        return count
+      }
+      document.write(`<div>
+   <p>
+      Оценки ученика ${scoreStudentArray}
+   </p>
+   <p>
+      Его количество двоек ${getStudentHave_2(scoreStudentArray)}
+   </p>
+   <p>
+      Количество 4-ок и 5-ок : ${getStudentHave_4_And_5(scoreStudentArray)}
+   </p>
+   <p>
+      Количество оценок ниже среднего балла ${getGradesBelowAverage(
+        scoreStudentArray
+      )}. Средний балл у ученика ${averageRating} 
+   </p>
+</div>`)
+    </script>
+  </body>
+</html>

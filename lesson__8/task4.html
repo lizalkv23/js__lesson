@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>lesson 8</title>
+  </head>
+
+  <body>
+    <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+      Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які
+      : • починаються на букву «А»; • перша і остання літери співпадають; •
+      складаються з більше ніш 5 символів;
+    </h1>
+    <script>
+      let autoNumberArray = [
+        "A48BF",
+        "A45BA",
+        "A4785BC",
+        "A777BA",
+        "F458BF",
+        "B458BA",
+        "C8BC",
+      ]
+      function isCarWithALetterAInTheNumber(autoNum) {
+        let count = 0
+        for (let i = 0; i < autoNum.length; i++) {
+          if (autoNum[i][0] === "A") {
+            count++
+          }
+        }
+        return count
+      }
+      function isNumberCarMore_5(autoNum) {
+        let count = 0
+        for (let i = 0; i < autoNum.length; i++) {
+          if (autoNum[i].length > 5) {
+            count++
+          }
+        }
+        return count
+      }
+      function isNumStartAndfinishLetterEqually(autoNum) {
+        let count = 0
+        for (let i = 0; i < autoNum.length; i++) {
+          if (autoNum[i][0] === autoNum[i][autoNum[i].length - 1]) {
+            count++
+          }
+        }
+        return count
+      }
+      document.write(`<div>
+   <p>
+      Номера машин ${autoNumberArray}
+   </p>
+   <p>
+      Количество машин которые начинаются на букву А : ${isCarWithALetterAInTheNumber(
+        autoNumberArray
+      )}
+   </p>
+   <p>
+      Количество машин у которых больше 5 символов : ${isNumberCarMore_5(
+        autoNumberArray
+      )}
+   </p>
+   <p>
+      Количество машин у которых первая и последняя буква совпадает : ${isNumStartAndfinishLetterEqually(
+        autoNumberArray
+      )}
+   </p>
+</div>`)
+    </script>
+  </body>
+</html>
