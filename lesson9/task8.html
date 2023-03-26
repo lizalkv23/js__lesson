@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="shortcut icon" href="favicon.ico" />
+   <title>lesson 9</title>
+</head>
+
+<body>
+   <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+      Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»
+   </h1>
+   <script>
+      const numberCarArray = ['A234FC','D3333F','AS324567','CD32777','AF6789','ASD32411','CD32456','C3244F']
+      const newNumberCarArray = numberCarArray.filter(el => el[0] === "A")
+      document.write(`<div>
+   <p>
+      Дан массив с номерами машин ${numberCarArray}
+   </p>
+   <p>
+      Сформированый новый массив с номерами которые начинаются на букву 'A'
+   </p>
+   <p>
+      ${newNumberCarArray}
+   </p>
+</div>`)
+
+   </script>
+</body>
+
+</html>

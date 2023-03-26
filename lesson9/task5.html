@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>lesson 9</title>
+  </head>
+
+  <body>
+    <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+      Дано масив елементів. Знайти добуток додатних елементів
+    </h1>
+    <script>
+      const array = [-12, -85, 235, 54, 14, 78, -896, 45, -54]
+      const plusValueArr = []
+      document.write(`Дан массив с элементами ${array}`)
+      for (const el of array) {
+        if (el > 0) plusValueArr.push(el)
+      }
+      function getPlusValueSum(array) {
+        let count = 0
+        for (let i = 0; i < array.length; i++) {
+          count += array[i]
+        }
+        return count * array.length
+      }
+      document.write(`<p> Плюсовые элементы из массива ${plusValueArr}</p>
+      <p> Сумма этих элементов  ${getPlusValueSum(plusValueArr)}</p>`)
+    </script>
+  </body>
+</html>

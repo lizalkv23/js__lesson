@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>lesson 9 </title>
+  </head>
+
+  <body>
+    <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+      Користувач вводить кількість елементів. Створити масив, що складається з
+      вказаної кількості елементів заповнених нулями.
+    </h1>
+    <script>
+      let userElement = parseInt(prompt(`Введите количество элементов`, "5"))
+      let elementArray = new Array(userElement).fill(0)
+      document.write(
+        `Количесто введеных элементов ${userElement}. Сам массив ${elementArray}`
+      )
+    </script>
+  </body>
+</html>

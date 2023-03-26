@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>lesson 9</title>
+  </head>
+
+  <body>
+    <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+      Користувач вводить кількість елементів. Створити масив, у якому перші 5
+      елементів заповнені 1-цями, а інші до кінця масиву заповнені 7-ками.
+    </h1>
+    <script>
+      let userElement = parseInt(prompt(`Введите количество элементов`, "8"))
+      const array = new Array(userElement).fill(1, 0, 5)
+      array.fill(7, 5, userElement)
+      document.write(array)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="shortcut icon" href="favicon.ico" />
+   <title>lesson 9</title>
+</head>
+
+<body>
+   <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+      Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2
+   </h1>
+   <script>
+      const arr1 = [24,54,10,5,12,14,65,120,14]
+      document.write(`<p> Дан массив из чисел ${arr1}</p>`)
+      const elementArr_1 = arr1[0]
+      arr1.forEach((element,index,arrRex) => {
+         if(element > elementArr_1) arrRex[index] *= 2
+      });
+      document.write(`<p> Умножение элементов в массиве, если они больше первого элемента , теперь массив выглядит так  ${arr1}<p>`)
+   </script>
+</body>
+
+</html>
