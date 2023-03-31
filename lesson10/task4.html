@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="shortcut icon" href="favicon.ico" />
+   <title>lesson 10 </title>
+</head>
+
+<body>
+   <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+      Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+      4 Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
+   </h1>
+   <script>
+
+      const randomNumFrom_1Before_10000Arr = [1465, 2145, 201, 10, 2589, 2486, 138, 54, 4520, 4785]
+      const maxNum = Math.max(...randomNumFrom_1Before_10000Arr)
+      const percent = 100 / maxNum
+      const percentNumOfRandomArr = randomNumFrom_1Before_10000Arr.map(element => percent *element | 0)
+      document.write(`Дан массив ${randomNumFrom_1Before_10000Arr} <br> Из данного массива, создаем новый массив, который содержит в себе  значение цен в процентах относительно максимального <p>${percentNumOfRandomArr} </P>`)
+   </script>
+</body>
+
+</html>

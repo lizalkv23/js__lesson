@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>lesson 10 </title>
+  </head>
+
+  <body>
+    <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+    Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+    1 Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
+    </h1>
+    <script>
+ 
+ const randomNumFrom_1Before_10000Arr = [1465,2145,201,10,2589,2486,138,54,4520,4785]
+      const numbersGreaterThan_1000 = randomNumFrom_1Before_10000Arr.filter(el => el>1000)
+      document.write(`Дан массив ${randomNumFrom_1Before_10000Arr} <br> Из данного массива, создаем новый массив, который содержит в себе числа больше 1000 <p>${numbersGreaterThan_1000}</P>`)
+    </script>
+  </body>
+</html>
