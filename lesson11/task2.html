@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="shortcut icon" href="favicon.ico" />
+   <title>lesson 11 </title>
+</head>
+
+<body>
+               <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+                  Дано інформацію про прибуток К магазинів протягом тижня. Знайти :
+               </h1>
+               <script>
+                  let userNumberWeeks = parseInt(prompt(`Введите количество недель`))
+      function getRandomNumber(minValue, maxValue) {
+      return Math.floor(Math.random()*(maxValue - minValue + 1) 
+      + minValue)
+      }
+      function generateRandomArr(arrL , minValue, maxValue) {
+      const arr = []
+      for (let i = 0; i < arrL; i++) {
+         const random = getRandomNumber(minValue,maxValue)
+         arr.push(random)
+      }
+      return arr
+      }
+      function generateRandomTable(rowsNum, columnsNum, minValue, maxValue) {
+      const table = []
+         document.write('<table border="2px">')
+         document.write("<tr>")
+      for (let i = 0; i < rowsNum; i++) {
+         const randomRow = generateRandomArr(columnsNum, minValue,maxValue)
+         document.write(`<td> ${randomRow} </td>`)
+         table.push(randomRow)
+         
+         document.write("</tr>")
+      }
+         document.write("</table>")
+      return table
+      }
+      let array = generateRandomTable(userNumberWeeks,7, 100,250)
+//----------------- 1 задача загальний прибуток кожного масиву за тиждень;
+   for (let i = 0; i < array.length; i++) {
+      let sum = 0
+      for (let j = 0; j < array[i].length; j++) {
+         sum += array[i][j]
+      }
+      document.write(`Сумма за неделю №${i +1} = ${sum} <br>`)
+   }
+//----------------- 2 задача  загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);
+      for (let i = 0; i < 7; i++) {
+         let sum = 0
+         for (let j = 0; j < array.length; j++) {
+            sum += array[j][i]
+         }
+         document.write(`Сумма общая всех ${i+1}-х дней недели = ${sum} <br>`)
+      }
+//------------------- 3 задача  загальний прибуток за робочі дні
+         for (let i = 0; i < array.length; i++) {
+               let sum = 0
+               for (let j = 0; j <= 4; j++) {
+                  sum += array[i][j]
+               }
+               document.write(`Сумма за рабочие дни в ${i+1} неделю = ${sum} <br>`)
+            }
+//------------------ 4 задача  загальний прибуток за вихідні дні
+               for (let i = 0; i < array.length; i++) {
+                     let sum = 0
+                     for (let j = 5; j < array[i].length; j++) {
+                        sum += array[i][j]
+                     }
+                     document.write(`Сумма за выходные дни в ${i + 1} неделю = ${sum} <br>`)
+                  }
+//------------------ 5 задача  максимальний прибуток за середу
+               let arr  = []
+               for (let i = 0; i < array.length; i++) {
+                        arr.push(array[i][2])
+                     }
+                     let maxSumWednesday = Math.max(...arr)
+                     document.write(`Максимальный зароботок за среду = ${maxSumWednesday} <br>`)
+//------------------- 6 задача  сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200
+         let arr200  = []
+         for (let i = 0; i < array.length; i++) {
+            for (let j = 0; j < array[i].length; j++) {
+               if(array[i][j] >= 200)
+                     arr200.push(array[i][j])
+                  } 
+               }
+               document.write(`Список значений больше чем 200 = ${arr200.join(';')} <br>`)
+//------------------- 7 задача   відсортувати кожен тиждень за зростанням
+               for (let i = 0; i < array.length; i++) {
+                  array[i].sort((el1,el2) => el1 - el2)
+               }
+               // document.write(`<br>Сортировка недель по возростанию ${array} <br>`)
+               console.table(array)
+//----------------------- 8 задача   відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+         let maxElement = array.map((row) => row.reduce((prevMax, el) => prevMax > el ? prevMax : el))
+
+         console.log(maxElement)
+         function sortArray(arrMax, arr){
+            const prevLastIndex = arrMax.length - 1
+            for (let i = 0; i < prevLastIndex; i++) {
+               let currentMin = i
+               for (let j = i +1; j < arrMax.length; j++) {
+                  if(arrMax[j]>
+                     arrMax[currentMin]) currentMin = j
+                  if (i !== currentMin) {
+                     [arrMax[i],arrMax[currentMin]] = [arrMax[currentMin], arrMax[i]]
+                  }
+               }
+            }
+            return arrMax
+         }
+
+         console.table(sortArray(maxElement, array))
+// 9 упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
+
+               let sumElement = array.map((row) => row.reduce((prevSum, el)=> prevSum + el
+               ,0))
+
+               console.table(sumElement)
+               console.table(sortArray(sumElement, array))
+   </script>
+</body>
+</html>
