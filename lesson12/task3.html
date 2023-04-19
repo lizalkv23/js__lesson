@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="shortcut icon" href="favicon.ico" />
+   <title>lesson 12 </title>
+</head>
+
+<body>
+   <h1 style="color: rgb(4, 37, 67); font-size: 20px; text-align: center;">
+      Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування включеннями.
+   </h1>
+   <script>
+
+      function randomArr(length, minNum, maxNum) {
+         let arr = []
+         for (let i = 0; i < length; i++) {
+            const random = Math.floor(Math.random() * (maxNum - minNum + 1) + minNum)
+            arr.push(random)
+         }
+         return arr
+      }
+      let arrRandom = randomArr(30, 20, 500)
+
+      document.write(`<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding : 15px;">
+          <p style="font-size: 18px; color: rgb(49, 8, 160); font-weight: 500;">
+           Наш массив  = ${arrRandom}
+          </p>
+        </div>`)
+        function byEnablingAlg(arrRandom) {
+            let key, i
+            let count = 0
+           for (let k = 1; k < arrRandom.length; k++) {
+              key = arrRandom[k]
+              i = k - 1
+              while (i >= 0 && arrRandom[i] > key) {
+                 arrRandom[i + 1] = arrRandom[i]
+                 i = i - 1
+              }
+              count++
+              arrRandom[i + 1] = key
+           }
+           return count
+        }
+      let sumCount = byEnablingAlg(arrRandom)
+      document.write(`<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding : 15px;">
+          <p style="font-size: 18px; color: rgb(149, 33, 83); font-weight: 500;">
+           Сколько обменов элемента было при использовании алгоритма "Включением"  = ${sumCount}
+          </p>
+          <p style="font-size: 18px; color: rgb(149, 33, 83); font-weight: 500;">
+           Наш уже отсортированный массив  = ${arrRandom}
+          </p>
+        </div>`)
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="shortcut icon" href="favicon.ico" />
+   <title>lesson 12 </title>
+</head>
+
+<body>
+   <h1 style="color: rgb(4, 37, 67); font-size: 20px; text-align: center;">
+      Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я «Olga» і під яким
+      індексом.
+   </h1>
+   <script> 
+
+      const arrNames= [
+         'Liza',
+         'Liza',
+         'Sasha',
+         'Andrew',
+         'Anna',
+         'Artem',
+         'Olga',
+         'Katya',
+      ]
+      document.write(`<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding : 15px;">
+          <p style="font-size: 18px; color: rgb(49, 8, 160); font-weight: 500;">
+           Наш массив  = ${arrNames}
+          </p>
+        </div>`)
+        let newArrNames = arrNames.sort((el1, el2) => {
+        return el1.length - el2.length
+       })
+      document.write(`<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding : 15px;">
+          <p style="font-size: 18px; color: rgb(149, 33, 83); font-weight: 500;">
+           Наш уже отсортированный массив  = ${newArrNames}
+          </p>
+        </div>`)
+
+        function binarySort(arr, searchEl) {
+                 let start = 0
+           let end = arr.length - 1
+           while (start <= end) {
+              let middle = Math.floor((start + end) / 2)
+              if (arr[middle] === searchEl) {
+                 return middle
+              }
+              if (arr[middle] < searchEl) {
+                 start = middle + 1
+              }
+              if (arr[middle] > searchEl) {
+                 end = middle - 1
+              }
+            }
+            return -1
+        }
+        const nameIndexOf = binarySort(newArrNames, 'Olga')
+        if (nameIndexOf === -1) {
+                       document.write(`<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding : 15px;">
+          <p style="font-size: 18px; color: rgb(149, 33, 83); font-weight: 500;">
+            Имя 'Olga' нет в данном массиве
+          </p>
+        </div>`)
+        } else
+              document.write(`<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding : 15px;">
+          <p style="font-size: 18px; color: rgb(149, 33, 83); font-weight: 500;">
+            Имя 'Olga' в данном массиве находится под индексом ${nameIndexOf}
+          </p>
+        </div>`)
+
+   </script>
+</body>
+
+</html>

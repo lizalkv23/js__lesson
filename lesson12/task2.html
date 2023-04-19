@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="shortcut icon" href="favicon.ico" />
+   <title>lesson 12 </title>
+</head>
+
+<body>
+   <h1 style="color: rgb(4, 37, 67); font-size: 20px; text-align: center;">
+      Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування змішуванням.
+   </h1>
+   <script>
+
+      function randomArr(length, minNum, maxNum) {
+         let arr = []
+         for (let i = 0; i < length; i++) {
+            const random = Math.floor(Math.random() * (maxNum - minNum + 1) + minNum)
+            arr.push(random)
+         }
+         return arr
+      }
+      let arrRandom = randomArr(30, 20, 500)
+
+      document.write(`<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding : 15px;">
+          <p style="font-size: 18px; color: rgb(49, 8, 160); font-weight: 500;">
+           Наш массив  = ${arrRandom}
+          </p>
+        </div>`)
+        const swap = (arr, i, j) => {
+            const tmp = arr[i]
+            arr[i] = arr[j]
+            arr[j] = tmp
+            return 1
+         }
+
+        function shakeAlg(arr, swap) {
+        let start = 0
+        let end = arr.length - 1
+        let count = 0
+        while (start < end) {
+         for (let i = start; i < end; i++) {
+            if(arr[i]>arr[i+1])
+            count += swap(arr, i, i+1)
+         }
+         end--
+         for (let i = end; i > start; i--) {
+            if(arr[i]<arr[i-1])
+            count+= swap(arr, i, i-1) 
+         }
+         start++
+      }
+      return count
+        }
+
+      let sumCount = shakeAlg(arrRandom, swap)
+      document.write(`<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding : 15px;">
+          <p style="font-size: 18px; color: rgb(149, 33, 83); font-weight: 500;">
+           Сколько обменов элемента было при использовании алгоритма "Шейк"  = ${sumCount}
+          </p>
+          <p style="font-size: 18px; color: rgb(149, 33, 83); font-weight: 500;">
+           Наш уже отсортированный массив  = ${arrRandom}
+          </p>
+        </div>`)
+   </script>
+</body>
+
+</html>

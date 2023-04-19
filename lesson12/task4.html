@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="shortcut icon" href="favicon.ico" />
+   <title>lesson 12 </title>
+</head>
+
+<body>
+   <h1 style="color: rgb(4, 37, 67); font-size: 20px; text-align: center;">
+      Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за зразком.
+   </h1>
+   <script>
+         //=======================================================================
+      const newArr = [6, 2 , 5,1,3,4]
+
+      document.write(`<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding : 15px;">
+          <p style="font-size: 18px; color: rgb(49, 8, 160); font-weight: 500;">
+           Наш массив 1  = ${newArr}
+          </p>
+        </div>`)
+      function byEnablingAlg(newArr) {
+         let key, i
+         let count = 0
+         for (let k = 1; k < newArr.length; k++) {
+            key = newArr[k]
+            i = k - 1
+            while (i >= 0 && newArr[i] > key) {
+               newArr[i + 1] = newArr[i]
+               i = i - 1
+            }
+            count++
+            newArr[i + 1] = key
+            document.write(`
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding :5px;">
+          <p style="font-size: 18px; color: rgb(149, 33, 83); font-weight: 500; border-bottom: 2px solid #b2b222 ">
+               Наш первый алгоритм Включением : [${newArr}]
+               </p>`)
+         }
+         return count
+      }
+
+   //================================================================
+         const newArr2 = [3,2,6,1,4,5]
+               document.write(`<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding : 15px;">
+          <p style="font-size: 18px; color: rgb(49, 8, 160); font-weight: 500;">
+           Наш массив 2  = ${newArr2}
+          </p>
+        </div>`)
+
+         const swap = (arr, i, j) => {
+            const tmp = arr[i]
+            arr[i] = arr[j]
+            arr[j] = tmp
+            return 1
+         }
+
+         function shakeAlg(arr) {
+            let start = 0
+            let end = arr.length - 1
+            let count = 0
+            while (start < end) {
+               for (let i = start; i < end; i++) {
+                  if (arr[i] > arr[i + 1])
+                     count += swap(arr, i, i + 1)
+               }
+               end--
+               document.write(`
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding :5px;">
+          <p style="font-size: 18px; color: rgb(149, 33, 83); font-weight: 500;border-bottom: 2px solid #c88c">
+               Наш второй алгоритм 'Шейк' : [${arr}]
+               </p>`)
+               for (let i = end; i > start; i--) {
+                  if (arr[i] < arr[i - 1])
+                     count += swap(arr, i, i - 1)
+               }
+               start++
+               document.write(`
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding :5px;">
+          <p style="font-size: 18px; color: rgb(149, 33, 83); font-weight: 500;border-bottom: 2px solid #c88c">
+               Наш второй алгоритм 'Шейк' : [${arr}]
+               </p>`)
+            }
+            return count
+         }
+            //==============================================================
+         const newArr3 = [6, 1, 5, 2, 4, 3]
+               document.write(`<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding : 15px;">
+          <p style="font-size: 18px; color: rgb(49, 8, 160); font-weight: 500;">
+           Наш массив 3 = ${newArr3}
+          </p>
+        </div>`)
+         function bubbleAlg(arr) {
+            let change
+            count = 0
+            do {
+               change = false
+               for (let i = 1; i < arr.length; i++) {
+                  if (arr[i - 1] > arr[i]) {
+                     [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]
+                     change = true
+                                  document.write(`
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding :5px;">
+          <p style="font-size: 18px; color: rgb(149, 33, 83); font-weight: 500;border-bottom: 2px solid #de3e33">
+               Наш третий алгоритм 'Бульбашкой' : [${arr}]
+               </p>`)
+                     count++
+                  }
+               }
+            } while (change);
+            return count
+         }
+
+      let sumCountChoiceAlg = byEnablingAlg(newArr)
+      let sumCountShakeAlg = shakeAlg(newArr2, swap)
+      let sumCountBubbleAlg = bubbleAlg(newArr3)
+      document.write(`<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding : 15px;">
+          <p style="font-size: 18px; color: rgb(149, 33, 83); font-weight: 500;">
+           Сколько обменов элемента было при использовании алгоритма "Включением"  = ${sumCountChoiceAlg}
+          </p>
+          <p style="font-size: 18px; color: rgb(149, 33, 83); font-weight: 500;">
+           Сколько обменов элемента было при использовании алгоритма "Шейк"  = ${sumCountShakeAlg}
+          </p>
+          <p style="font-size: 18px; color: rgb(149, 33, 83); font-weight: 500;">
+           Сколько обменов элемента было при использовании алгоритма "Бульбашкой"  = ${sumCountBubbleAlg}
+          </p>
+        </div>`)
+   </script>
+</body>
+
+</html>
