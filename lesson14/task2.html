@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="shortcut icon" href="favicon.ico" />
+   <title>lesson 14 </title>
+</head>
+
+<body>
+   <h1 style="color: rgb(4, 37, 67); font-size: 20px">
+      Задача 2 Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.
+   </h1>
+   <script>
+      let currentDate = {
+         day: 23,
+         month : 4,
+         year: 2023,
+      }
+      let userNumMonth = parseInt(prompt(`Чтоб узнать какой год будет , напишите сколько месяцев нужно прибавить ?`, '5'))
+      const allMonthInYear = 12
+      function getCurrentYear({month, year}, n) {
+         month = month + n
+         while (month >= 12) {
+            month = month - allMonthInYear
+           year = year + 1
+         }
+         return year
+      }
+      let resultYear = getCurrentYear(currentDate, userNumMonth)
+      document.write(`Через ${userNumMonth} месяцев будет ${resultYear} год`)
+   </script>
+</body>
+
+</html>

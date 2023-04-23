@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>lesson 14 </title>
+  </head>
+
+  <body>
+    Знайти:
+    <script>
+      let websites = [
+        {
+          companyName : "Apple",
+          ownerCompany : "Tim Kuk",
+          sponsors : [
+            {
+              surname : "Depp 1",
+              name : "Johnny 1",
+              investment : 2000000
+            },
+            {
+               surname: "Depp 2",
+              name: "Johnny 2",
+              investment: 500000
+            },
+            {
+               surname: "Depp 3",
+              name: "Johnny 3",
+              investment: 600000
+            },
+            {
+               surname: "Depp 4",
+              name: "Johnny 4",
+              investment: 8000
+            }
+          ],
+          yearOfProduction : 2005,
+          priceSites : 8896
+        },
+                {
+          companyName: "Google",
+          ownerCompany: "Larry Page",
+          sponsors: [
+            {
+              surname: "Cruise 1",
+              name: "Tom 1",
+              investment: 2000500
+
+            },
+            {
+              surname: "Cruise 2",
+              name: "Tom 2",
+              investment: 508000
+            },
+            {
+              surname: "Cruise 3",
+              name: "Tom 3",
+              investment: 700000
+            },
+            {
+              surname: "Cruise 4",
+              name: "Tom 4",
+              investment: 875000
+            }
+          ],
+          yearOfProduction: 2015,
+          priceSites: 2588000896
+        },
+                {
+          companyName: "Microsoft",
+          ownerCompany: "Bill Gates",
+          sponsors: [
+            {
+              surname: "Hiddleston 1",
+              name: "Thomas 1",
+              investment: 200014000
+            },
+            {
+              surname: "Hiddleston 2",
+              name: "Thomas 2",
+              investment: 750000
+            },
+            {
+              surname: "Hiddleston 3",
+              name: "Thomas 3",
+              investment: 500000
+            },
+            {
+              surname: "Hiddleston 4",
+              name: "Thomas 4",
+              investment: 800200
+            }
+          ],
+          yearOfProduction: 1998,
+          priceSites: 55588896
+        },
+      ]
+       // 1 загальну вартість усіх сайтів
+        let totalPrice = websites.reduce((prevSum, site) => site.priceSites + prevSum
+        
+        ,0)
+        document.write(` <br> Общая сумма всех сайтов ${totalPrice}`)
+
+        //2 кількість сайтів, що було зроблено між 2000 та 2009 рр.
+
+        let allQuantity = websites.reduce((prevQuan, year) =>  {
+          if(year.yearOfProduction>=2000 && year.yearOfProduction <=2009) prevQuan++
+          return prevQuan
+        }
+        ,0)
+        document.write(` <br> Количество сайтов сделанных в промежутке 2000 - 2009 г.г. = ${allQuantity}`)
+
+
+        // кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+        const totalSumInvestment = websites.reduce ((prevSponsor, site) =>{
+          let allSum = site.sponsors.reduce((prevSum, sum) => {
+          
+          return prevSum + sum.investment
+        }
+          ,0)
+          console.log(allSum);
+                if ( allSum > 1000000)
+              prevSponsor++
+            return prevSponsor
+        }
+        ,0)
+             document.write(` <br> Количество сайтов где сумма спонсорских вложений была больше 100000 = ${totalSumInvestment} <br>`)
+            //4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+
+            function getSponsorList(arrSite) {
+                 let arr = []
+                 for(let site of arrSite) {
+                   for(let sponsor of site.sponsors) {
+                 arr.push(`${sponsor.name} - ${sponsor.surname}`)
+                   }
+                  }
+                  return arr
+                }
+                const sponsors = getSponsorList (websites)
+                document.write( `<br> Список спонсоров : ${sponsors.join(',')} <br>`)
+
+                // знайти рік, коли прибуток був найбільшим
+                const yearProfitsGreater =  websites.reduce((prev, site) => {
+                    if (prev.priceSites > site.priceSites)
+                      return prev
+                    else return site
+                  },).yearOfProduction
+                  //упорядкувати список за спаданням прибутку
+                  const sortPriceSitesOfDescending = websites.sort((el1,el2 ) => el1.priceSites - el2.priceSites  )
+                  console.log(sortPriceSitesOfDescending)
+                  //cтворити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+                  const newObj = JSON.parse(JSON.stringify(websites))
+                  document.write(`Копия объекта  <br>${JSON.stringify(newObj)} <br><br><br>`)
+                  console.log(newObj)
+                  let sitePriceMoreThan1000 = newObj.filter(el => el.priceSites > 10000)
+                  let sitePriceLessThan1000 = newObj.filter(el => el.priceSites < 10000)
+                  document.write(`Сайты что имеют стоимость больше 10000 <br> ${JSON.stringify(sitePriceMoreThan1000) } <br> <br><br>Сайты что имеют стоимость меньше 10000 <br>  ${JSON.stringify(sitePriceLessThan1000) }`)
+    </script>
+  </body>
+</html>
