@@ -43,11 +43,12 @@
       Створити функцію, яка виводить банер
     </h1>
     <script>
-      function isBannerLink(a) {
-        return a
+      function isBannerLink(link, imgNum) {
+        return `<a href=${link} class="link"> Моя работа <img src="img/${imgNum}.png" alt="my work" class='img'></a>`
       }
-      const bannerLink = `<a href=" https://lizalkv23.github.io/marketplace/" class="link"> Моя работа <img src="img/0.png" alt="my work" class='img'></a>`
-      document.write(isBannerLink(bannerLink))
+      const linkHref = " https://lizalkv23.github.io/marketplace/"
+      const banner = isBannerLink(linkHref, 0)
+      document.write(`<div>${banner}</div>`)
     </script>
   </body>
 </html>
