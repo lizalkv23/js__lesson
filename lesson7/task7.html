@@ -14,12 +14,13 @@
       зображень (шляхи до зображень передаються у функцію)
     </h1>
     <script>
-      function isImagesPreview(number) {
-        return number
+      function isImagesPreview(minNum, maxNum) {
+         let randomNumberImages = Math.floor(Math.random() * (maxNum - minNum)+1)
+        return `<img src="img/${randomNumberImages}.png" alt="${randomNumberImages}">`
       }
-      const randomNumberImages = Math.floor(Math.random() * 4)
-      const result = isImagesPreview(randomNumberImages)
-      document.write(`<img src="img/${result}.png" alt="">`)
+     
+      const result = isImagesPreview(1, 4)
+      document.write(`<div>${result}</div>`)
     </script>
   </body>
 </html>
